@@ -58,7 +58,7 @@ jobs:
 
     services:
       postgres:
-        image: supabase/postgres
+        image: supabase/postgres:15
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
