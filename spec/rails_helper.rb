@@ -38,9 +38,9 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 Capybara.configure do |config|
-  config.default_max_wait_time = 10
-  config.default_driver = :selenium_chrome_headless
-  config.javascript_driver = :selenium_chrome_headless
+  config.default_max_wait_time = 5
+  config.default_driver = :selenium_chrome
+  config.javascript_driver = :selenium_chrome
 end
 
 RSpec.configure do |config|

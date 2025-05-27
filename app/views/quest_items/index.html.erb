@@ -5,18 +5,17 @@
   </div>
   <div class="flex flex-col items-center gap-5">
     <%= image_tag "first_portrait.jpg", class: 'rounded-lg w-2/3' %>
-    <%= link_to "My Brag Document", brags_documents_path, class: 'btn btn-primary btn-lg' %>
+    <%= link_to "My Brag Document", brags_documents_path, class: 'btn btn-primary btn-lg', id: 'brag-link' %>
   </div>
-</div>
-<end>
-  <div class="flex items-center justify-between mb-4">
-    <h1 class="text-3xl font-bold">My Quest Items</h1>
-    <%= link_to "New Quest", new_quest_item_path, class: 'btn btn-secondary', data: {turbo_frame: "new_quest"}  %>
+  <div class="mt-12">
+    <div class="flex items-center justify-between mb-4">
+      <h1 class="text-3xl font-bold">My Quest Items</h1>
+      <%= link_to "New Quest", new_quest_item_path, class: 'btn btn-secondary', data: {turbo_frame: "new_quest"}, id: 'new-quest-button'  %>
+    </div>
+    <%= turbo_frame_tag "new_quest" do %>
+    <% end %>
+    <%= turbo_frame_tag "quest_list", class: "flex flex-col gap-2 mt-4" do %>
+      <%= render @quest_items %>
+    <% end %>
   </div>
-  <%= turbo_frame_tag "new_quest" do %>
-  <% end %>
-  <%= turbo_frame_tag "quest_list", class: "flex flex-col gap-2 mt-4" do %>
-    <%= render @quest_items %>
-  <% end %>
-</div>
 </section>

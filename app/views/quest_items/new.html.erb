@@ -1,8 +1,8 @@
 <section class="app-container py-8 space-y-5">
   <%= turbo_frame_tag "new_quest" do %>
     <%= form_with model: @quest_item, local: true do |form| %>
-      <%= form.text_field :name, class: 'input', placeholder: 'Your new Quest' %>
-      <%= form.submit 'Create Quest', class: 'btn btn-primary' %>
+      <%= form.text_field :name, class: 'input', placeholder: 'Your new Quest', id: 'quest-item-name' %>
+      <%= form.submit 'Create Quest', class: 'btn btn-primary', id: 'create-quest-button' %>
       <%= link_to 'Cancel', quest_items_path, class: 'btn btn-outline' %>
     <% end %>
   <% end %>
