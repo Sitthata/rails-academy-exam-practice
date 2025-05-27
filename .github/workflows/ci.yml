@@ -85,10 +85,17 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Set up PostgreSQL database
+        env:
+          RAILS_ENV: test
+          DATABASE_URL: postgresql://postgres.hjjqljvgdyrtiksreuej:VekgK1Vn5U9j176F@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres
+        run: |
+          bundle exec rails db:prepare
+
       - name: Run tests
         env:
           RAILS_ENV: test
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432
+          DATABASE_URL: postgresql://postgres.hjjqljvgdyrtiksreuej:VekgK1Vn5U9j176F@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres
           # REDIS_URL: redis://localhost:6379/0
         run: bundle exec rspec
 
