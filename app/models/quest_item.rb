@@ -1,0 +1,2 @@
+class QuestItem < ApplicationRecord
+end
