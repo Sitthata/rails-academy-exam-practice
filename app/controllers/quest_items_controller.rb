@@ -14,10 +14,15 @@ class QuestItemsController < ApplicationController
   def create
     @quest_item = QuestItem.new(quest_item_params)
 
-    if @quest_item.save
-      redirect_to quest_items_path, notice: "Quest item was successfully created."
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @quest_item.save
+        format.html { redirect_to quest_items_path, notice: "Quest item was successfully created." }
+        format.turbo_stream {
+          render turbo_stream: turbo_stream.append("quest_list", partial: "quest_items/quest_item", locals: { quest_item: @quest_item })
+        }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -31,7 +36,12 @@ class QuestItemsController < ApplicationController
 
   def destroy
     @quest_item.destroy!
-    redirect_to quest_items_path, notice: "Quest item was successfully deleted."
+    respond_to do |format|
+      format.html { redirect_to quest_items_path, notice: "Quest item was successfully deleted." }
+      format.turbo_stream {
+        render turbo_stream: turbo_stream.remove(@quest_item)
+      }
+    end
   end
 
   private

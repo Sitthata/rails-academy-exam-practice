@@ -1,4 +1,4 @@
-<section class="container mx-auto px-4 py-8 space-y-5">
+<section class="container mx-auto px-4 py-8 space-y-5 mb-55">
   <div class="space-y-2 text-center">
     <h1 class="text-5xl font-bold">My Academy Quest</h1>
     <span class="text-lg">Pattaradanai Srichon</span>
@@ -11,8 +11,10 @@
 <end>
   <div class="flex items-center justify-between mb-4">
     <h1 class="text-3xl font-bold">My Quest Items</h1>
-    <%= link_to "New Quest", new_quest_item_path, class: 'btn btn-secondary' %>
+    <%= link_to "New Quest", new_quest_item_path, class: 'btn btn-secondary', data: {turbo_frame: "new_quest"}  %>
   </div>
+  <%= turbo_frame_tag "new_quest" do %>
+  <% end %>
   <%= turbo_frame_tag "quest_list", class: "flex flex-col gap-2 mt-4" do %>
     <%= render @quest_items %>
   <% end %>
