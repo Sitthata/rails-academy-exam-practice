@@ -2,6 +2,7 @@ class QuestItemsController < ApplicationController
   before_action :set_quest_item, only: [ :update, :destroy ]
 
   def index
+    @quest_items = QuestItem.all
   end
 
   def new
