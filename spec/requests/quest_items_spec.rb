@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "QuestItems", type: :request do
   describe "GET /index" do
     it "returns http success" do
-      get "/quest_items"
+      get quest_items_path
       expect(response).to have_http_status(:success)
     end
   end
