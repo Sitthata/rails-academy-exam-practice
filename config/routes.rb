@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "brags_documents" => "page#index", as: :brags_documents
+  root "quest_items#index"
   resources :quest_items
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
