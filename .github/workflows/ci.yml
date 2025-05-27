@@ -96,7 +96,7 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
-          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/myapp_ci_test
+          DATABASE_URL: postgresql://supabase_admin:postgres@localhost:5432/myapp_ci_test
           # REDIS_URL: redis://localhost:6379/0
         run: bundle exec rspec
 
