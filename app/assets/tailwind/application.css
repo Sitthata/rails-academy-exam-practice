@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&display=swap");
+
 @import "tailwindcss";
 @source "../../../public/*.html";
 @source "../../../app/helpers/**/*.rb";
@@ -11,8 +13,16 @@
   /* custom theme here */
 }
 
+@theme {
+  --font-anuphan: "Anuphan", sans-serif;
+}
+
 @layer utilities {
-  /* Custom utilities can be added here */
+  root,
+  * {
+    @apply font-anuphan;
+  }
+
   .app-container {
     @apply container mx-auto px-4;
   }

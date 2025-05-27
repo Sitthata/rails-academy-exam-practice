@@ -23,7 +23,7 @@ class QuestItemsController < ApplicationController
 
   def update
     if @quest_item.update(quest_item_params)
-      redirect_to @quest_item, notice: "Quest item was successfully updated."
+      redirect_to quest_items_path, notice: "Quest item was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end

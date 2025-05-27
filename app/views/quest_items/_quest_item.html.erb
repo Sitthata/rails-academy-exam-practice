@@ -1,7 +1,7 @@
-<div class="flex items-center p-4 bg-base-300 rounded-lg justify-between shadow-sm">
+<%= turbo_frame_tag dom_id(quest_item), class: "flex p-4 bg-base-300 rounded-lg justify-between shadow-sm" do %>
   <%= form_with model: quest_item, local: true, class: 'inline space-x-3', data: {controller: "checkbox"} do |form| %>
     <%= form.check_box :completed, class: "checkbox", data: {action: "click->checkbox#submit"} %>
     <span class="<%= quest_item.completed ? 'line-through text-gray-500' : '' %>"><%= quest_item.name %></span>
   <% end %>
   <%= button_to "Delete", quest_item_path(quest_item), method: :delete, class: 'btn btn-error' %>
-</div>
+<% end %>
