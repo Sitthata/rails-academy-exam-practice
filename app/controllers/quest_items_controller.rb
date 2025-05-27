@@ -29,6 +29,8 @@ class QuestItemsController < ApplicationController
   end
 
   def destroy
+    @quest_item.destroy!
+    redirect_to quest_items_path, notice: "Quest item was successfully deleted."
   end
 
   private

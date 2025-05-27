@@ -37,7 +37,13 @@ RSpec.describe "QuestItems", type: :request do
   end
 
   describe "DELETE /destroy" do
-    it "returns http success" do
+    let!(:quest_item) { create(:quest_item, name: "To be Deleted") }
+
+    it "deleted the existed quest item" do
+      expect {
+        delete quest_item_path(quest_item)
+      }.to change(QuestItem, :count).by(-1)
+      expect(response).to redirect_to(quest_items_path)
     end
   end
 end
